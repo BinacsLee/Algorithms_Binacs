@@ -37,10 +37,10 @@
            return;
         }
         int m=(l+r)>>1;
-        pushdown(rt,m-1+1,r-m);     //下推标记
+        pushdown(rt,m-l+1,r-m);     //下推标记
         //这里判断左右子树跟[L,R]有无交集，有交集才递归
         if(L<=m) update(L,R,C,l,m,rt<<1);
-        if(R>m) update(L,R,C,m+1,R,rt<<1|1);
+        if(R>m) update(L,R,C,m+1,r,rt<<1|1);
         pushup(rt);
     }
     //区间修改与查询 下面首先是下推标记的函数
