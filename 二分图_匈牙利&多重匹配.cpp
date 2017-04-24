@@ -76,3 +76,23 @@ int main(){
     }
     return 0;
 }
+
+
+／*----------多重匹配-----------*／
+int vlink[m],link[n][m];
+bool dfs(int x){
+    for(int i=0;i<m;i++){
+        if(!vis[i]&&G[x][i]){
+            vis[i]=true;
+            if(vlink[i]<maxcap){
+                link[i][vlink[i]++]=x;return true;
+            }
+            for(int j=0;j<vlink[i];j++){
+                if(dfs(link[i][j])){
+                    link[i][j]=x;return true;
+                }
+            }
+        }
+    }
+    return false;
+}
