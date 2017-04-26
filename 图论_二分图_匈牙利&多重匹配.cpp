@@ -1,15 +1,3 @@
-#include <iostream>
-#include <map>
-#include <stack>
-#include <set>
-#include <string>
-#include <sstream>
-#include <cstring>
-#include <queue>
-#include <cstdio>
-#include <algorithm>
-#include <cmath>
-using namespace std;
 
 int color[205];
 int link[205],n,m;
