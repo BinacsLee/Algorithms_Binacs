@@ -11,7 +11,7 @@ int n;
 vector<int> G[maxn];
 int pre[maxn],lowlink[maxn],sccno[maxn],dfs_clock,scc_cnt;
 stack<int> s;
-int in[maxn],out[maxn];   //锁点后统计
+int in[maxn],out[maxn];   //缩点后统计
 
 void dfs(int u){
     pre[u]=lowlink[u]=++dfs_clock;
@@ -45,7 +45,6 @@ int main(){
     while(cin>>n){
         int v;
         for(int i=0;i<n;i++){
-            //cout <<i<<endl;
             G[i].clear();
             while(cin>>v&&v) G[i].push_back(--v);
         }
