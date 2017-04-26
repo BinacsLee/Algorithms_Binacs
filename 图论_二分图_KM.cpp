@@ -1,17 +1,4 @@
-//hdu2255
 
-#include <iostream>
-#include <map>
-#include <stack>
-#include <set>
-#include <string>
-#include <sstream>
-#include <cstring>
-#include <queue>
-#include <cstdio>
-#include <algorithm>
-#include <cmath>
-using namespace std;
 
 /*------------------O(n^4)-------------------*/
 const int maxn=1e4;
