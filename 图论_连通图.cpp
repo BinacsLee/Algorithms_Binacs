@@ -1,5 +1,29 @@
 
+/*-----------------------求割点和桥 uva315----------------------*／
 
+const int maxn=105;
+int n;
+vector<int> G[maxn];
+int pre[maxn],low[maxn],dfs_clock;
+bool iscut[maxn];
+
+int dfs(int u,int fa){
+    int lowu=pre[u]=++dfs_clock;
+    int child=0;
+    for(int i=0;i<G[u].size();i++){
+        int v=G[u][i];
+        if(!pre[v]){
+            child++;
+            int lowv=dfs(v,u);
+            lowu=min(lowu,lowv);
+            if(lowv>=pre[u]) iscut[u]=true; //割点
+            
+        }else if(pre[v]<pre[u]&&v!=fa) lowu=min(lowu,pre[v]);
+    }
+    if(fa<0&&child==1) iscut[u]=false;
+    low[u]=lowu;
+    return lowu;
+}
 
 
 
