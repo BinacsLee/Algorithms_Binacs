@@ -24,7 +24,7 @@ int dfs(int u,int fa){
     low[u]=lowu;
     return lowu;
 }
-
+        //初始调用时 dfs(1,-1);即可
 
 
 
