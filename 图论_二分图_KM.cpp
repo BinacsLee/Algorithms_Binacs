@@ -97,7 +97,7 @@ void update(){
 }
 int KM(){
     for(int i=1;i<=ny;i++){
-        ly[i]=0;link[i]=0;slack[i]=0;
+        ly[i]=0;link[i]=0;/*slack[i]=0;*/
     }
     for(int i=1;i<=nx;i++){
         lx[i]=0;                // 若最小权
