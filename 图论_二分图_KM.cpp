@@ -32,7 +32,7 @@ int KM(){
         ly[i]=0;link[i]=0;  //注意link初始化0和-1细微区别
     }
     for(int i=1;i<=nx;i++){
-        lx[i]=0;                // 若最小权
+        lx[i]=0;                // 若最小权初始化-INF
         for(int j=1;j<=ny;j++)
             if(G[i][j]>lx[i]) lx[i]=G[i][j];
     }
