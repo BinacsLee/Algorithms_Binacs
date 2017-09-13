@@ -1,4 +1,4 @@
-/*    基础KMP P为模版串  *／
+/*    基础KMP P为模版串  */
 const int maxn=1e4+5;
 char P[maxn];
 char T[maxn];
@@ -19,6 +19,10 @@ void find(char* T,char* P,int* t){
     for(int i=0;i<n;i++){               //文本串当前指针
         while(j&&P[j]!=T[i]) j=f[j];    //顺着失配边走 直到可以匹配
         if(P[j]==T[i]) j++;
-        if(j==m) printf("%d\n",i-m+1);  //找到了 返回 可以改本函数返回类型
+        if(j==m){
+            printf("%d\n",i-m+1);  //找到了 返回 可以改本函数返回类型
+            j=0; //  若不可重叠匹配
+            j=f[j]; //若可重叠匹配
+        }
     }
 }
