@@ -26,3 +26,42 @@ void find(char* T,char* P,int* t){
         }
     }
 }
+
+
+/*    拓展KMP P为模版串  */
+int nt[100005],ex[100005];
+char T[100005],P[100005];
+void get_next(char* P,int* nt){
+    int m=strlen(P),a=0;
+    nt[0]=m;
+    while(a<m-1&&P[a]==P[a+1]) a++;
+    nt[1]=a;
+    a=1;
+    for(int i=2;i<m;i++){
+        int p=a+nt[a]-1,l=nt[i-a];
+        if((i-1)+l>=p){
+            int j=(p-i+1)>0?(p-i+1):0;
+            while(i+j<m&&P[i+j]==T[j]) j++;
+            nt[i]=j;
+            a=i;
+        }else nt[i]=l;
+    }
+}
+
+void exkmp(char* T,char* P,int *nt){
+    get_next(P,nt);
+    int n=strlen(T),m=strlen(P),a=0;
+    int minl=n<m?n:m;
+    while(a<minl&&T[a]==P[a]) a++;
+    ex[0]=a;
+    a=0;
+    for(int i=1;i<minl;i++){
+        int p=a+ex[a]-1,l=nt[i-a];
+        if((i-1)+l>=p){
+            int j=(p-i+1)>0?(p-i+1):0;
+            while(i+j<n&&j<m&&T[i+j]==P[j]) j++;
+            ex[i]=j;
+            a=i;
+        }else ex[i]=l;
+    }
+}
