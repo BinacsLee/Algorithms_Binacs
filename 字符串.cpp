@@ -65,3 +65,30 @@ void exkmp(char* T,char* P,int *nt){
         }else ex[i]=l;
     }
 }
+
+/*    manacher     */
+char ma[1000005],s[500005];
+void manacher(int len){
+    int l=0;
+    ma[l++]='$';
+    ma[l++]='#';
+    for(int i=0;i<len;i++){
+        ma[l++]=s[i];
+        ma[l++]='#';
+    }
+    ma[l]=0;
+    int mx=0,id=0;
+    for(int i=0;i<l;i++){
+        mp[i]=mx>i?min(mp[2*id-i],mx-i):1;
+        while(ma[i+mp[i]]==ma[i-mp[i]]) mp[i]++;
+        if(i+mp[i]>mx){
+            mx=i+mp[i];
+            id=i;
+        }
+    }
+}
+//
+//        abcde->%a%b%c%d%e% 
+//        记录p[i]表示i能向两边推（包括i）的最大距离，如果能求出p，则答案就是max(p)-1了
+//        （以i为中点的最长回文为2*p[i]-1，但这是加过字符后的答案，把加进去的字符干掉，最长回文就是p[i]-1
+
