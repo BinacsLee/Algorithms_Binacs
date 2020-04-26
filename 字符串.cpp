@@ -78,7 +78,7 @@ void manacher(int len){
     }
     ma[l]=0;
     int mx=0,id=0;
-    for(int i=0;i<l;i++){
+    for(int i=1;i<l;i++){
         mp[i]=mx>i?min(mp[2*id-i],mx-i):1;
         while(ma[i+mp[i]]==ma[i-mp[i]]) mp[i]++;
         if(i+mp[i]>mx){
